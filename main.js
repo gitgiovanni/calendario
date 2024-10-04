@@ -1,6 +1,6 @@
 
 
-// variaveis globaiss
+// variaveis globais
 
 let nav = 0
 let clicked = null

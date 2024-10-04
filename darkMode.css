@@ -42,11 +42,18 @@ label:active::after {
   height: 32px; /* Diminuir a altura ao ser pressionado */
 }
 
+#container {
+  flex: 1;      /* Permite que o container principal expanda para ocupar espaço disponível */
+  display: flex; 
+  flex-direction: column; /* Organiza os elementos verticalmente */
+}
+
 footer {
-    text-align: center;
-    margin-top: 60px;
-    color: #7f8c8d;
-    font-size: 0.9rem;
-    padding: 20px 0;
-    border-top: 1px solid #bdc3c7;
+  text-align: center;
+  margin-top: 60px;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  padding: 20px 0;
+  border-top: 1px solid #bdc3c7;
+  background-color: #fff; /* Adiciona um fundo branco ao footer */
 }

@@ -7,9 +7,9 @@ input[type=checkbox] {
 label {
   cursor: pointer;
   text-indent: -9999px;
-  width: 70px; /* Largura maior para um visual mais espaçoso */
-  height: 36px; /* Altura maior para um visual mais moderno */
-  background: #ccc; /* Cor de fundo padrão */
+  width: 80px; /* Largura maior para um visual mais espaçoso */
+  height: 40px; /* Altura maior para um visual mais moderno */
+  background: #555; /* Cor de fundo padrão */
   float: right;
   border-radius: 50px; /* Borda mais arredondada */
   position: relative;
@@ -21,11 +21,11 @@ label::after {
   position: absolute;
   top: 4px; /* Margem superior ajustada */
   left: 4px; /* Margem esquerda ajustada */
-  width: 28px; /* Aumentar o tamanho do botão interno */
-  height: 28px; /* Aumentar o tamanho do botão interno */
+  width: 30px; /* Aumentar o tamanho do botão interno */
+  height: 30px; /* Aumentar o tamanho do botão interno */
   background-color: #fff; /* Cor de fundo do botão interno */
   border-radius: 50%; /* Bordas completamente arredondadas */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para profundidade */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Sombra para profundidade */
   transition: transform 0.3s; /* Transição suave para movimento */
 }
 
@@ -34,7 +34,7 @@ input:checked + label {
 }
 
 input:checked + label::after {
-  transform: translateX(34px); /* Mover para a direita quando ativo */
+  transform: translateX(40px); /* Mover para a direita quando ativo */
 }
 
 label:active::after {

@@ -13,7 +13,6 @@ html {
 
 body {
   display: flex;
-  flex-direction: column; /* Para melhor empilhamento no mobile */
   margin-top: 50px;
   justify-content: center;
   background-color: var(--body-color);
@@ -42,8 +41,7 @@ button:hover {
   color: var(--header-color);
   font-size: 32px; /* Tamanho da fonte maior */
   display: flex;
-  flex-direction: column; /* Mudando para coluna */
-  align-items: center; /* Centraliza os itens */
+  justify-content: space-between;
 }
 
 #header button {
@@ -51,21 +49,18 @@ button:hover {
 }
 
 #container {
-  width: 90%; /* Ajustando para uma largura responsiva */
-  max-width: 900px; /* Largura máxima */
+  width: 900px; /* Largura do container aumentada */
 }
 
 #weekdays {
   width: 100%;
   display: flex;
-  flex-wrap: wrap; /* Permite quebra de linha */
-  justify-content: space-between; /* Espaço entre os dias */
   color: var(--color-weekdays);
   font-weight: bold; /* Negrito para os dias da semana */
 }
 
 #weekdays div {
-  flex: 1 1 14%; /* Flexível para responsividade */
+  width: 100px;
   padding: 20px; /* Mais espaço nos dias da semana */
   text-align: center; /* Centralizar o texto */
 }
@@ -78,7 +73,7 @@ button:hover {
 }
 
 .day {
-  flex: 1 1 14%; /* Flexível para responsividade */
+  width: 100px;
   padding: 20px;
   height: 120px; /* Aumentando a altura para mais espaço */
   cursor: pointer;
@@ -120,12 +115,11 @@ button:hover {
 #newEventModal, #deleteEventModal {
   display: none;
   z-index: 20;
-  padding: 20px; /* Menos espaço interno em telas menores */
+  padding: 40px; /* Mais espaço interno */
   background-color: var(--modal-event);
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Sombra mais forte */
   border-radius: 15px; /* Bordas mais arredondadas */
-  width: 90%; /* Largura do modal responsiva */
-  max-width: 450px; /* Largura máxima do modal */
+  width: 450px; /* Largura do modal aumentada */
   top: 100px;
   left: calc(50% - 225px);
   position: absolute;
@@ -180,54 +174,4 @@ footer {
   bottom: 0; 
   width: 100%; 
   font-size: 14px; /* Aumentar tamanho da fonte do rodapé */
-}
-
-/* Media Queries para Responsividade */
-@media (max-width: 768px) {
-  #header {
-    font-size: 24px; /* Reduzir tamanho da fonte no cabeçalho */
-  }
-
-  button {
-    width: 80%; /* Botões mais largos em telas pequenas */
-  }
-
-  #weekdays div, .day {
-    flex: 1 1 30%; /* Mudando para 30% em telas pequenas */
-    padding: 10px; /* Menos espaço interno */
-  }
-
-  #newEventModal, #deleteEventModal {
-    padding: 20px; /* Menos espaço interno */
-    width: 90%; /* Largura do modal responsiva */
-    left: 5%; /* Ajustar a posição do modal */
-    top: 50px; /* Reduzir o espaço superior */
-  }
-
-  footer {
-    font-size: 12px; /* Diminuir a fonte do rodapé */
-  }
-}
-
-@media (max-width: 480px) {
-  #header {
-    font-size: 20px; /* Diminuir ainda mais o cabeçalho */
-  }
-
-  button {
-    width: 90%; /* Botões ainda mais largos em telas pequenas */
-  }
-
-  #weekdays div, .day {
-    flex: 1 1 45%; /* Mudando para 45% em telas muito pequenas */
-    padding: 5px; /* Menos espaço interno */
-  }
-
-  #calendar {
-    flex-wrap: wrap; /* Quebrar linhas em telas muito pequenas */
-  }
-
-  footer {
-    font-size: 10px; /* Diminuir ainda mais a fonte do rodapé */
-  }
 }

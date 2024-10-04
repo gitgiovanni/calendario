@@ -1,4 +1,4 @@
-input[type=checkbox]{
+input[type=checkbox] {
   height: 0;
   width: 0;
   visibility: hidden;
@@ -7,36 +7,37 @@ input[type=checkbox]{
 label {
   cursor: pointer;
   text-indent: -9999px;
-  width: 52px;
-  height: 27px;
-  background: grey;
+  width: 70px; /* Largura maior para um visual mais espaçoso */
+  height: 36px; /* Altura maior para um visual mais moderno */
+  background: #ccc; /* Cor de fundo padrão */
   float: right;
-  border-radius: 100px;
+  border-radius: 50px; /* Borda mais arredondada */
   position: relative;
-  left: -50px;
+  transition: background-color 0.3s; /* Transição suave de cor */
 }
 
-label::after{
+label::after {
   content: '';
   position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 20px;
-  height: 20px;
-  background-color: white;
-  border-radius: 90px;
-  transition: 0.3s;
+  top: 4px; /* Margem superior ajustada */
+  left: 4px; /* Margem esquerda ajustada */
+  width: 28px; /* Aumentar o tamanho do botão interno */
+  height: 28px; /* Aumentar o tamanho do botão interno */
+  background-color: #fff; /* Cor de fundo do botão interno */
+  border-radius: 50%; /* Bordas completamente arredondadas */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para profundidade */
+  transition: transform 0.3s; /* Transição suave para movimento */
 }
 
 input:checked + label {
-  background-color: rgb(142, 142, 240);
+  background-color: #4caf50; /* Cor de fundo quando ativo */
 }
 
 input:checked + label::after {
-  left: calc(100% - 5px);
-  transform: translateX(-100%);
+  transform: translateX(34px); /* Mover para a direita quando ativo */
 }
 
-label:active:after {
-  width: 45px;
+label:active::after {
+  width: 32px; /* Diminuir a largura ao ser pressionado */
+  height: 32px; /* Diminuir a altura ao ser pressionado */
 }

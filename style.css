@@ -164,3 +164,12 @@ button:hover {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.7); /* Escurecer um pouco mais o fundo do modal */
 }
+
+footer {
+    text-align: center;
+    margin-top: 60px;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    padding: 20px 0;
+    border-top: 1px solid #bdc3c7;
+}

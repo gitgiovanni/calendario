@@ -41,23 +41,3 @@ label:active::after {
   width: 32px; /* Diminuir a largura ao ser pressionado */
   height: 32px; /* Diminuir a altura ao ser pressionado */
 }
-
-#container {
-  flex: 1;      /* Permite que o container principal expanda para ocupar espaço disponível */
-  display: flex; 
-  flex-direction: column; /* Organiza os elementos verticalmente */
-}
-
-/* Estilos para o Footer */
-footer {
-    text-align: center; /* Centraliza o texto */
-    margin-top: 60px; /* Espaço acima do footer */
-    color: #ecf0f1; /* Cor do texto mais clara para contraste */
-    font-size: 0.9rem; /* Tamanho da fonte */
-    padding: 20px 0; /* Espaçamento interno */
-    border-top: 1px solid #bdc3c7; /* Borda superior */
-    width: 100%; /* Garante que o footer ocupe 100% da largura */
-    position: relative; /* Necessário para manter o layout */
-    left: 50%; /* Alinha o footer ao centro */
-    transform: translateX(-50%); /* Ajusta a posição para centralizar */
-}

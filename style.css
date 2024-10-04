@@ -1,14 +1,14 @@
 html {
-  --body-color: #f0f4f8; /* Cor de fundo mais clara e suave */
-  --header-color: #c74c4c; /* Um tom mais escuro de vermelho */
-  --header-button: #6a98c8; /* Azul suave para os botões do cabeçalho */
+  --body-color: #ffffff; /* Cor de fundo mais clara e neutra */
+  --header-color: #c74c4c; /* Tom de vermelho mais suave */
+  --header-button: #4a92d0; /* Azul claro para os botões do cabeçalho */
   --color-weekdays: #2b4d70; /* Azul escuro para os dias da semana */
-  --box-shadow: rgba(0, 0, 0, 0.2); /* Sombra mais suave */
-  --hover: #d3f8d3; /* Verde suave ao passar o mouse */
+  --box-shadow: rgba(0, 0, 0, 0.15); /* Sombra mais sutil */
+  --hover: #e6f7ff; /* Azul claro ao passar o mouse */
   --current-day: #d1e7dd; /* Cor clara para o dia atual */
-  --event-color: #64b6e5; /* Azul mais vibrante para eventos */
-  --modal-event: #d1e7dd; /* Fundo do modal mais claro */
-  --color-day: #ffffff; /* Cor de fundo dos dias */
+  --event-color: #3f7cba; /* Azul vibrante para eventos */
+  --modal-event: #f8f9fa; /* Fundo do modal mais claro */
+  --color-day: #fefefe; /* Cor de fundo dos dias */
 }
 
 body {
@@ -16,29 +16,30 @@ body {
   margin-top: 50px;
   justify-content: center;
   background-color: var(--body-color);
-  font-family: 'Arial', sans-serif; /* Fonte mais moderna */
+  font-family: 'Poppins', sans-serif; /* Fonte moderna */
 }
 
 button {
-  width: 80px; /* Largura do botão levemente aumentada */
+  width: 100px; /* Largura do botão aumentada */
   cursor: pointer;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
   border: none;
   outline: none;
-  padding: 8px; /* Padding maior para um visual mais espaçoso */
-  border-radius: 25px; /* Bordas arredondadas mais pronunciadas */
+  padding: 10px 15px; /* Padding maior para um visual mais espaçoso */
+  border-radius: 30px; /* Bordas arredondadas mais suaves */
   color: white;
+  font-weight: bold; /* Texto em negrito para melhor legibilidade */
   transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
 }
 
 button:hover {
-  transform: translateY(-2px); /* Efeito de elevação ao passar o mouse */
+  transform: translateY(-3px); /* Efeito de elevação ao passar o mouse */
 }
 
 #header {
-  padding: 15px; /* Mais espaço ao redor do cabeçalho */
+  padding: 20px; /* Mais espaço ao redor do cabeçalho */
   color: var(--header-color);
-  font-size: 28px; /* Tamanho da fonte maior */
+  font-size: 32px; /* Tamanho da fonte maior */
   display: flex;
   justify-content: space-between;
 }
@@ -48,7 +49,7 @@ button:hover {
 }
 
 #container {
-  width: 800px; /* Largura do container aumentada para mais espaço */
+  width: 900px; /* Largura do container aumentada */
 }
 
 #weekdays {
@@ -60,7 +61,7 @@ button:hover {
 
 #weekdays div {
   width: 100px;
-  padding: 15px; /* Mais espaço nos dias da semana */
+  padding: 20px; /* Mais espaço nos dias da semana */
   text-align: center; /* Centralizar o texto */
 }
 
@@ -73,17 +74,17 @@ button:hover {
 
 .day {
   width: 100px;
-  padding: 15px;
-  height: 100px;
+  padding: 20px;
+  height: 120px; /* Aumentando a altura para mais espaço */
   cursor: pointer;
   box-sizing: border-box;
   background-color: var(--color-day);
   margin: 5px;
-  box-shadow: 0px 2px 6px var(--box-shadow);
+  box-shadow: 0px 4px 10px var(--box-shadow);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 15%; /* Mantida borda arredondada */
+  border-radius: 20px; /* Borda arredondada */
   transition: background-color 0.3s; /* Transição suave de fundo */
 }
 
@@ -96,12 +97,12 @@ button:hover {
 }
 
 .event {
-  font-size: 12px; /* Aumentar tamanho da fonte dos eventos */
-  padding: 5px; /* Mais espaço interno */
+  font-size: 14px; /* Aumentar tamanho da fonte dos eventos */
+  padding: 8px; /* Mais espaço interno */
   background-color: var(--event-color);
   color: white;
-  border-radius: 10px; /* Bordas arredondadas mais suaves */
-  max-height: 55px;
+  border-radius: 15px; /* Bordas arredondadas mais suaves */
+  max-height: 60px;
   overflow: hidden;
 }
 
@@ -114,25 +115,25 @@ button:hover {
 #newEventModal, #deleteEventModal {
   display: none;
   z-index: 20;
-  padding: 30px; /* Mais espaço interno */
+  padding: 40px; /* Mais espaço interno */
   background-color: var(--modal-event);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Sombra mais forte */
-  border-radius: 10px; /* Bordas mais arredondadas */
-  width: 400px; /* Largura do modal aumentada */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Sombra mais forte */
+  border-radius: 15px; /* Bordas mais arredondadas */
+  width: 450px; /* Largura do modal aumentada */
   top: 100px;
-  left: calc(50% - 200px);
+  left: calc(50% - 225px);
   position: absolute;
-  font-family: 'Arial', sans-serif; /* Fonte consistente com o resto */
+  font-family: 'Poppins', sans-serif; /* Fonte consistente com o resto */
 }
 
 #eventTitleInput {
-  padding: 12px; /* Aumentar o padding */
+  padding: 15px; /* Aumentar o padding */
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 20px;
-  border-radius: 5px; /* Bordas arredondadas */
+  margin-bottom: 25px; /* Aumentar espaçamento */
+  border-radius: 8px; /* Bordas arredondadas */
   outline: none;
-  border: 2px solid #ddd; /* Borda mais visível */
+  border: 2px solid #ccc; /* Borda mais visível */
   transition: border-color 0.3s; /* Transição suave para a borda */
 }
 
@@ -142,16 +143,16 @@ button:hover {
 
 #cancelButton, #deleteButton {
   background-color: var(--header-color);
-  border-radius: 20px; /* Bordas arredondadas nos botões */
+  border-radius: 25px; /* Bordas arredondadas nos botões */
 }
 
 #saveButton, #closeButton {
   background-color: var(--header-button);
-  border-radius: 20px; /* Bordas arredondadas nos botões */
+  border-radius: 25px; /* Bordas arredondadas nos botões */
 }
 
 #eventText {
-  font-size: 16px; /* Aumentar tamanho do texto do evento */
+  font-size: 18px; /* Aumentar tamanho do texto do evento */
 }
 
 #modalBackDrop {
@@ -162,15 +163,15 @@ button:hover {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.7); /* Escurecer um pouco mais o fundo do modal */
+  background-color: rgba(0, 0, 0, 0.75); /* Escurecer um pouco mais o fundo do modal */
 }
 
 footer {
   text-align: center; 
-  padding: 10px; 
+  padding: 15px; /* Aumentar padding do rodapé */
   background-color: #f9fafc; 
   position: fixed; /* Ou sticky, se preferir */
   bottom: 0; 
   width: 100%; 
+  font-size: 14px; /* Aumentar tamanho da fonte do rodapé */
 }
-

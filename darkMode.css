@@ -41,3 +41,12 @@ label:active::after {
   width: 32px; /* Diminuir a largura ao ser pressionado */
   height: 32px; /* Diminuir a altura ao ser pressionado */
 }
+
+footer {
+    text-align: center;
+    margin-top: 60px;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    padding: 20px 0;
+    border-top: 1px solid #bdc3c7;
+}

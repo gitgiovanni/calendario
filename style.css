@@ -1,46 +1,48 @@
 html {
-  --body-color: #f0f4f8; /* Cor de fundo mais clara e suave */
-  --header-color: #c74c4c; /* Um tom mais escuro de vermelho */
-  --header-button: #6a98c8; /* Azul suave para os botões do cabeçalho */
-  --color-weekdays: #2b4d70; /* Azul escuro para os dias da semana */
-  --box-shadow: rgba(0, 0, 0, 0.2); /* Sombra mais suave */
-  --hover: #d3f8d3; /* Verde suave ao passar o mouse */
-  --current-day: #d1e7dd; /* Cor clara para o dia atual */
-  --event-color: #64b6e5; /* Azul mais vibrante para eventos */
-  --modal-event: #d1e7dd; /* Fundo do modal mais claro */
-  --color-day: #ffffff; /* Cor de fundo dos dias */
+  --body-color: #f0f4f8; 
+  --header-color: #c74c4c; 
+  --header-button: #6a98c8; 
+  --color-weekdays: #2b4d70; 
+  --box-shadow: rgba(0, 0, 0, 0.2); 
+  --hover: #d3f8d3; 
+  --current-day: #d1e7dd; 
+  --event-color: #64b6e5; 
+  --modal-event: #d1e7dd; 
+  --color-day: #ffffff; 
 }
 
 body {
   display: flex;
-  margin-top: 50px;
+  margin: 0;
   justify-content: center;
   background-color: var(--body-color);
-  font-family: 'Arial', sans-serif; /* Fonte mais moderna */
+  font-family: 'Arial', sans-serif; 
+  padding: 0 10px; /* Adiciona padding lateral para telas pequenas */
 }
 
 button {
-  width: 80px; /* Largura do botão levemente aumentada */
+  width: 80px; 
   cursor: pointer;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
   border: none;
   outline: none;
-  padding: 8px; /* Padding maior para um visual mais espaçoso */
-  border-radius: 25px; /* Bordas arredondadas mais pronunciadas */
+  padding: 8px; 
+  border-radius: 25px; 
   color: white;
-  transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
+  transition: background-color 0.3s, transform 0.2s; 
 }
 
 button:hover {
-  transform: translateY(-2px); /* Efeito de elevação ao passar o mouse */
+  transform: translateY(-2px); 
 }
 
 #header {
-  padding: 15px; /* Mais espaço ao redor do cabeçalho */
+  padding: 15px; 
   color: var(--header-color);
-  font-size: 28px; /* Tamanho da fonte maior */
+  font-size: 28px; 
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap; /* Para ajustar o layout em telas pequenas */
 }
 
 #header button {
@@ -48,20 +50,23 @@ button:hover {
 }
 
 #container {
-  width: 800px; /* Largura do container aumentada para mais espaço */
+  max-width: 800px; /* Ajusta a largura máxima */
+  width: 100%; /* Permite que o container ocupe a largura total */
 }
 
 #weekdays {
   width: 100%;
   display: flex;
   color: var(--color-weekdays);
-  font-weight: bold; /* Negrito para os dias da semana */
+  font-weight: bold; 
+  flex-wrap: wrap; /* Permite que os dias da semana se ajustem em telas menores */
 }
 
 #weekdays div {
-  width: 100px;
-  padding: 15px; /* Mais espaço nos dias da semana */
-  text-align: center; /* Centralizar o texto */
+  flex: 1; /* Ajusta o espaço disponível para os dias da semana */
+  min-width: 80px; /* Define uma largura mínima para cada dia */
+  padding: 15px; 
+  text-align: center; 
 }
 
 #calendar {
@@ -72,7 +77,8 @@ button:hover {
 }
 
 .day {
-  width: 100px;
+  flex: 1; /* Permite que os dias ocupem espaço igual */
+  min-width: 80px; 
   padding: 15px;
   height: 100px;
   cursor: pointer;
@@ -83,8 +89,8 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 15%; /* Mantida borda arredondada */
-  transition: background-color 0.3s; /* Transição suave de fundo */
+  border-radius: 15%; 
+  transition: background-color 0.3s; 
 }
 
 .day:hover {
@@ -96,11 +102,11 @@ button:hover {
 }
 
 .event {
-  font-size: 12px; /* Aumentar tamanho da fonte dos eventos */
-  padding: 5px; /* Mais espaço interno */
+  font-size: 12px; 
+  padding: 5px; 
   background-color: var(--event-color);
   color: white;
-  border-radius: 10px; /* Bordas arredondadas mais suaves */
+  border-radius: 10px; 
   max-height: 55px;
   overflow: hidden;
 }
@@ -114,44 +120,48 @@ button:hover {
 #newEventModal, #deleteEventModal {
   display: none;
   z-index: 20;
-  padding: 30px; /* Mais espaço interno */
+  padding: 30px; 
   background-color: var(--modal-event);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Sombra mais forte */
-  border-radius: 10px; /* Bordas mais arredondadas */
-  width: 400px; /* Largura do modal aumentada */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+  border-radius: 10px; 
+  width: 90%; /* Ajusta a largura do modal para ocupar mais espaço */
+  max-width: 400px; /* Define um tamanho máximo */
   top: 100px;
-  left: calc(50% - 200px);
+  left: 50%;
+  transform: translateX(-50%); /* Centraliza o modal */
   position: absolute;
-  font-family: 'Arial', sans-serif; /* Fonte consistente com o resto */
+  font-family: 'Arial', sans-serif; 
 }
 
 #eventTitleInput {
-  padding: 12px; /* Aumentar o padding */
+  padding: 12px; 
   width: 100%;
   box-sizing: border-box;
   margin-bottom: 20px;
-  border-radius: 5px; /* Bordas arredondadas */
+  border-radius: 5px; 
   outline: none;
-  border: 2px solid #ddd; /* Borda mais visível */
-  transition: border-color 0.3s; /* Transição suave para a borda */
+  border: 2px solid #ddd; 
+  transition: border-color 0.3s; 
 }
 
 #eventTitleInput.error {
-  border: 2px solid red; /* Borda vermelha para erro */
+  border: 2px solid red; 
+}
+
+#cancelButton, #deleteButton, #saveButton, #closeButton {
+  border-radius: 20px; 
 }
 
 #cancelButton, #deleteButton {
   background-color: var(--header-color);
-  border-radius: 20px; /* Bordas arredondadas nos botões */
 }
 
 #saveButton, #closeButton {
   background-color: var(--header-button);
-  border-radius: 20px; /* Bordas arredondadas nos botões */
 }
 
 #eventText {
-  font-size: 16px; /* Aumentar tamanho do texto do evento */
+  font-size: 16px; 
 }
 
 #modalBackDrop {
@@ -162,14 +172,38 @@ button:hover {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.7); /* Escurecer um pouco mais o fundo do modal */
+  background-color: rgba(0, 0, 0, 0.7); 
 }
 
 footer {
   text-align: center; 
   padding: 10px; 
   background-color: #f9fafc; 
-  position: fixed; /* Ou sticky, se preferir */
+  position: fixed; 
   bottom: 0; 
   width: 100%; 
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  #header {
+    font-size: 24px; /* Tamanho da fonte reduzido */
+  }
+  
+  #container {
+    padding: 0 10px; /* Espaçamento lateral */
+  }
+
+  .day {
+    min-width: 70px; /* Reduzir a largura mínima */
+    height: 80px; /* Ajusta a altura */
+  }
+
+  button {
+    width: 70px; /* Botões um pouco menores */
+  }
+
+  #eventText {
+    font-size: 14px; /* Reduzir tamanho do texto do evento */
+  }
 }

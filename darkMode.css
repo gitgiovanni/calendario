@@ -9,11 +9,16 @@ label {
   text-indent: -9999px;
   width: 80px; /* Largura maior para um visual mais espaçoso */
   height: 40px; /* Altura maior para um visual mais moderno */
-  background: #555; /* Cor de fundo padrão */
+  background: #555; /* Cor de fundo padrão (modo claro) */
   float: right;
   border-radius: 50px; /* Borda mais arredondada */
   position: relative;
   transition: background-color 0.3s; /* Transição suave de cor */
+}
+
+/* Estado padrão para o dark mode */
+body.dark-mode label {
+  background: #777; /* Cor de fundo padrão (modo escuro) */
 }
 
 label::after {
@@ -23,20 +28,32 @@ label::after {
   left: 4px; /* Margem esquerda ajustada */
   width: 30px; /* Aumentar o tamanho do botão interno */
   height: 30px; /* Aumentar o tamanho do botão interno */
-  background-color: #fff; /* Cor de fundo do botão interno */
+  background-color: #fff; /* Cor de fundo do botão interno (modo claro) */
   border-radius: 50%; /* Bordas completamente arredondadas */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Sombra para profundidade */
   transition: transform 0.3s; /* Transição suave para movimento */
 }
 
+/* Estado do botão interno no dark mode */
+body.dark-mode label::after {
+  background-color: #333; /* Cor do botão interno no modo escuro */
+}
+
+/* Estilos para quando o checkbox está ativo */
 input:checked + label {
-  background-color: #4caf50; /* Cor de fundo quando ativo */
+  background-color: #4caf50; /* Cor de fundo quando ativo (modo claro) */
+}
+
+/* Muda a cor de fundo quando ativo no dark mode */
+body.dark-mode input:checked + label {
+  background-color: #66bb6a; /* Cor de fundo quando ativo no modo escuro */
 }
 
 input:checked + label::after {
   transform: translateX(40px); /* Mover para a direita quando ativo */
 }
 
+/* Diminuir a largura ao ser pressionado */
 label:active::after {
   width: 32px; /* Diminuir a largura ao ser pressionado */
   height: 32px; /* Diminuir a altura ao ser pressionado */

@@ -19,6 +19,11 @@ body {
   font-family: 'Arial', sans-serif; /* Fonte mais moderna */
 }
 
+html, body {
+  height: 100%; /* Certifica-se de que o body ocupa 100% da altura da tela */
+  margin: 0;    /* Remove margens padrão do body */
+}
+
 button {
   width: 80px; /* Largura do botão levemente aumentada */
   cursor: pointer;

@@ -19,11 +19,6 @@ body {
   font-family: 'Arial', sans-serif; /* Fonte mais moderna */
 }
 
-html, body {
-  height: 100%; /* Certifica-se de que o body ocupa 100% da altura da tela */
-  margin: 0;    /* Remove margens padrão do body */
-}
-
 button {
   width: 80px; /* Largura do botão levemente aumentada */
   cursor: pointer;
@@ -168,17 +163,4 @@ button:hover {
   height: 100vh;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.7); /* Escurecer um pouco mais o fundo do modal */
-}
-
-footer {
-    text-align: center; /* Centraliza o texto */
-    margin-top: 60px; /* Espaço acima do footer */
-    color: #7f8c8d; /* Cor do texto */
-    font-size: 0.9rem; /* Tamanho da fonte */
-    padding: 20px 0; /* Espaçamento interno */
-    border-top: 1px solid #bdc3c7; /* Borda superior */
-    width: 100%; /* Garante que o footer ocupe 100% da largura */
-    position: relative; /* Necessário para manter o layout */
-    left: 50%; /* Alinha o footer ao centro */
-    transform: translateX(-50%); /* Ajusta a posição para centralizar */
 }

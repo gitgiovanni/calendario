@@ -1,155 +1,166 @@
-html{
-
-
-  --body-color:#FFFCFF ;
-
-  --header-color:#d36c6c;
-
-  --header-button:#92a1d1;
-
-  --color-weekdays: #247BA0;
-  
-  --box-shadow: #CBD4C2;
-
-  --hover: #e8faed;
-
-  --current-day:#e8f4fa;
-
-  --event-color: #58bae4;
-
-  --modal-event: #e8f4fa;
-
-
- --color-day:white;
-  
-
+html {
+  --body-color: #f0f4f8; /* Cor de fundo mais clara e suave */
+  --header-color: #c74c4c; /* Um tom mais escuro de vermelho */
+  --header-button: #6a98c8; /* Azul suave para os botões do cabeçalho */
+  --color-weekdays: #2b4d70; /* Azul escuro para os dias da semana */
+  --box-shadow: rgba(0, 0, 0, 0.2); /* Sombra mais suave */
+  --hover: #d3f8d3; /* Verde suave ao passar o mouse */
+  --current-day: #d1e7dd; /* Cor clara para o dia atual */
+  --event-color: #64b6e5; /* Azul mais vibrante para eventos */
+  --modal-event: #d1e7dd; /* Fundo do modal mais claro */
+  --color-day: #ffffff; /* Cor de fundo dos dias */
 }
-
-
 
 body {
   display: flex;
   margin-top: 50px;
   justify-content: center;
   background-color: var(--body-color);
+  font-family: 'Arial', sans-serif; /* Fonte mais moderna */
 }
+
 button {
-  width: 75px;
+  width: 80px; /* Largura do botão levemente aumentada */
   cursor: pointer;
-  box-shadow: 0px 0px 2px gray;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
   border: none;
   outline: none;
-  padding: 5px;
-  border-radius: 5px;
+  padding: 8px; /* Padding maior para um visual mais espaçoso */
+  border-radius: 25px; /* Bordas arredondadas mais pronunciadas */
   color: white;
+  transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
+}
+
+button:hover {
+  transform: translateY(-2px); /* Efeito de elevação ao passar o mouse */
 }
 
 #header {
-  padding: 10px;
-  color: var(--header-color) ;
-  font-size: 26px;
-  font-family: sans-serif;
+  padding: 15px; /* Mais espaço ao redor do cabeçalho */
+  color: var(--header-color);
+  font-size: 28px; /* Tamanho da fonte maior */
   display: flex;
   justify-content: space-between;
 }
+
 #header button {
-  background-color:var(--header-button);
+  background-color: var(--header-button);
 }
+
 #container {
-  width: 770px;
+  width: 800px; /* Largura do container aumentada para mais espaço */
 }
+
 #weekdays {
   width: 100%;
   display: flex;
-  color: var(--color-weekdays) ;
+  color: var(--color-weekdays);
+  font-weight: bold; /* Negrito para os dias da semana */
 }
+
 #weekdays div {
   width: 100px;
-  padding: 10px;
+  padding: 15px; /* Mais espaço nos dias da semana */
+  text-align: center; /* Centralizar o texto */
 }
+
 #calendar {
   width: 100%;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
 }
+
 .day {
   width: 100px;
-  padding: 10px;
+  padding: 15px;
   height: 100px;
   cursor: pointer;
   box-sizing: border-box;
   background-color: var(--color-day);
   margin: 5px;
-  box-shadow: 0px 0px 3px var(--box-shadow);
+  box-shadow: 0px 2px 6px var(--box-shadow);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 15%;
+  border-radius: 15%; /* Mantida borda arredondada */
+  transition: background-color 0.3s; /* Transição suave de fundo */
 }
+
 .day:hover {
   background-color: var(--hover);
 }
 
-.day + #currentDay {
-  background-color:var(--current-day);
+.day.currentDay {
+  background-color: var(--current-day);
 }
+
 .event {
-  font-size: 10px;
-  padding: 3px;
+  font-size: 12px; /* Aumentar tamanho da fonte dos eventos */
+  padding: 5px; /* Mais espaço interno */
   background-color: var(--event-color);
   color: white;
-  border-radius: 5px;
+  border-radius: 10px; /* Bordas arredondadas mais suaves */
   max-height: 55px;
   overflow: hidden;
 }
+
 .padding {
   cursor: default !important;
   background-color: var(--body-color) !important;
   box-shadow: none !important;
 }
+
 #newEventModal, #deleteEventModal {
   display: none;
   z-index: 20;
-  padding: 25px;
+  padding: 30px; /* Mais espaço interno */
   background-color: var(--modal-event);
-  box-shadow: 0px 0px 3px black;
-  border-radius: 5px;
-  width: 350px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Sombra mais forte */
+  border-radius: 10px; /* Bordas mais arredondadas */
+  width: 400px; /* Largura do modal aumentada */
   top: 100px;
-  left: calc(50% - 175px);
+  left: calc(50% - 200px);
   position: absolute;
-  font-family: sans-serif;
+  font-family: 'Arial', sans-serif; /* Fonte consistente com o resto */
 }
+
 #eventTitleInput {
-  padding: 10px;
+  padding: 12px; /* Aumentar o padding */
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 25px;
-  border-radius: 3px;
+  margin-bottom: 20px;
+  border-radius: 5px; /* Bordas arredondadas */
   outline: none;
-  border: none;
-  box-shadow: 0px 0px 3px gray;
+  border: 2px solid #ddd; /* Borda mais visível */
+  transition: border-color 0.3s; /* Transição suave para a borda */
 }
+
 #eventTitleInput.error {
-  border: 2px solid red;
+  border: 2px solid red; /* Borda vermelha para erro */
 }
+
 #cancelButton, #deleteButton {
   background-color: var(--header-color);
+  border-radius: 20px; /* Bordas arredondadas nos botões */
 }
+
 #saveButton, #closeButton {
   background-color: var(--header-button);
+  border-radius: 20px; /* Bordas arredondadas nos botões */
 }
+
 #eventText {
-  font-size: 14px;
+  font-size: 16px; /* Aumentar tamanho do texto do evento */
 }
+
 #modalBackDrop {
   display: none;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   z-index: 10;
   width: 100vw;
   height: 100vh;
   position: absolute;
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0, 0, 0, 0.7); /* Escurecer um pouco mais o fundo do modal */
 }

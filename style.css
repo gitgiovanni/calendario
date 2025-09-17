@@ -96,20 +96,52 @@ button:hover {
   background-color: var(--hover);
 }
 
-/* CORREÇÃO: Usando a classe .currentDay ao invés de ID */
 .day.currentDay {
   background-color: var(--current-day);
 }
-
 .event {
   font-size: 12px;
   padding: 3px;
-  background-color: var(--event-color);
-  color: white;
+  /* CORREÇÃO: A cor de fundo será definida pelo JS */
+  /* background-color: var(--event-color); */ 
+  color: white; /* Mantemos a cor do texto branca, ideal para fundos coloridos */
   border-radius: 5px;
-  max-height: 65px; /* Aumenta a altura máxima */
+  max-height: 65px;
   overflow: hidden;
-  margin-top: 5px; /* Espaço entre o número do dia e o evento */
+  margin-top: 5px;
+  /* Adiciona uma sombra sutil para o texto se destacar */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4); 
+}
+
+#eventColorInput {
+  width: 50px;
+  height: 35px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent; /* Remove o fundo padrão */
+  padding: 0;
+  border-radius: 5px;
+}
+
+#eventColorInput::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+#eventColorInput::-webkit-color-swatch {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+/* Estilo para a "caixinha" do input de cor no Firefox */
+#eventColorInput::-moz-color-swatch {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+
+.color-picker-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
 }
 /* Estiliza o conteúdo HTML vindo do Quill */
 .event p, .event h1, .event h2, .event ol, .event ul {
@@ -180,6 +212,9 @@ button:hover {
   min-height: 100px;
   max-height: 300px;
   overflow-y: auto;
+  /* NOVO: Adiciona uma borda que terá a cor do evento */
+  border-left: 5px solid transparent;
+  transition: border-left 0.3s ease;
 }
 
 #modalBackDrop {

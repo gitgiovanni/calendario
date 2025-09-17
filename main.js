@@ -1,7 +1,8 @@
 
 
 // variaveis globais
-
+// Adicione esta linha no topo do seu main.js
+let editor = null;
 let nav = 0
 let clicked = null
 let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : []
@@ -18,22 +19,27 @@ const weekdays = ['domingo','segunda-feira', 'terça-feira', 'quarta-feira', 'qu
 
 //funções
 
+// Substitua sua função openModal() existente por esta
 function openModal(date){
-  clicked = date
-  const eventDay = events.find((event)=>event.date === clicked)
- 
+  clicked = date;
+  const eventDay = events.find((event) => event.date === clicked);
 
   if (eventDay){
-   document.getElementById('eventText').innerText = eventDay.title
-   deleteEventModal.style.display = 'block'
-
-
-  } else{
-    newEvent.style.display = 'block'
-
+    document.getElementById('eventText').innerText = eventDay.title;
+    deleteEventModal.style.display = 'block';
+  } else {
+    // Inicialize o editor Quill se ele não estiver inicializado
+    if (!editor) {
+      editor = new Quill('#editor', {
+        theme: 'snow'
+      });
+    } else {
+      // Limpe o conteúdo do editor para um novo evento
+      editor.setContents([]);
+    }
+    newEvent.style.display = 'block';
   }
-
-  backDrop.style.display = 'block'
+  backDrop.style.display = 'block';
 }
 
 //função load() será chamada quando a pagina carregar:
@@ -93,14 +99,14 @@ function load (){
         dayS.id = 'currentDay'
       }
 
-
-      if(eventDay){
-        const eventDiv = document.createElement('div')
-        eventDiv.classList.add('event')
-        eventDiv.innerText = eventDay.title
-        dayS.appendChild(eventDiv)
-
-      }
+// Na sua função load(), altere este bloco de código
+if(eventDay){
+  const eventDiv = document.createElement('div')
+  eventDiv.classList.add('event')
+  // Use innerHTML para renderizar o conteúdo HTML do editor
+  eventDiv.innerHTML = eventDay.title 
+  dayS.appendChild(eventDiv)
+}
 
       dayS.addEventListener('click', ()=> openModal(dayString))
 
@@ -136,20 +142,21 @@ function closeModal(){
   load()
 
 }
+// Substitua sua função saveEvent() existente por esta
 function saveEvent(){
-  if(eventTitleInput.value){
-    eventTitleInput.classList.remove('error')
-
+  // Verifique se o editor tem algum conteúdo
+  const content = editor.root.innerHTML;
+  if(content && content.trim() !== '<p><br></p>'){ // Verifica se não está vazio ou com apenas uma linha em branco
     events.push({
       date: clicked,
-      title: eventTitleInput.value
-    })
+      title: content
+    });
 
-    localStorage.setItem('events', JSON.stringify(events))
-    closeModal()
-
-  }else{
-    eventTitleInput.classList.add('error')
+    localStorage.setItem('events', JSON.stringify(events));
+    closeModal();
+  } else {
+    // Alerta se o editor estiver vazio
+    alert('Por favor, adicione algum conteúdo.');
   }
 }
 

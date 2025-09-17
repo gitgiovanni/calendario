@@ -4,10 +4,10 @@ html {
   --header-button: #6a98c8; /* Azul suave para os botões do cabeçalho */
   --color-weekdays: #2b4d70; /* Azul escuro para os dias da semana */
   --box-shadow: rgba(0, 0, 0, 0.2); /* Sombra mais suave */
-  --hover: #d3f8d3; /* Verde suave ao passar o mouse */
+  --hover: #e8f5e9; /* Verde mais suave ao passar o mouse */
   --current-day: #d1e7dd; /* Cor clara para o dia atual */
   --event-color: #64b6e5; /* Azul mais vibrante para eventos */
-  --modal-event: #d1e7dd; /* Fundo do modal mais claro */
+  --modal-event: #f9fafc; /* Fundo do modal mais neutro */
   --color-day: #ffffff; /* Cor de fundo dos dias */
 }
 
@@ -17,6 +17,7 @@ body {
   justify-content: center;
   background-color: var(--body-color);
   font-family: 'Arial', sans-serif; /* Fonte mais moderna */
+  padding-bottom: 60px; /* Adiciona espaço para o rodapé não sobrepor o conteúdo */
 }
 
 button {
@@ -41,6 +42,7 @@ button:hover {
   font-size: 28px; /* Tamanho da fonte maior */
   display: flex;
   justify-content: space-between;
+  align-items: center; /* Alinha os botões verticalmente com o título */
 }
 
 #header button {
@@ -59,9 +61,10 @@ button:hover {
 }
 
 #weekdays div {
-  width: 100px;
+  width: calc(100% / 7); /* Cálculo para ocupar o espaço corretamente */
   padding: 15px; /* Mais espaço nos dias da semana */
   text-align: center; /* Centralizar o texto */
+  box-sizing: border-box; /* Garante que padding não afete a largura */
 }
 
 #calendar {
@@ -72,8 +75,8 @@ button:hover {
 }
 
 .day {
-  width: 100px;
-  padding: 15px;
+  width: calc(100% / 7 - 10px); /* Ajusta a largura para caber 7 por linha com margem */
+  padding: 10px;
   height: 100px;
   cursor: pointer;
   box-sizing: border-box;
@@ -82,27 +85,36 @@ button:hover {
   box-shadow: 0px 2px 6px var(--box-shadow);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  border-radius: 15%; /* Mantida borda arredondada */
-  transition: background-color 0.3s; /* Transição suave de fundo */
+  justify-content: flex-start; /* Alinha o número do dia no topo */
+  border-radius: 8px;
+  transition: background-color 0.3s;
+  position: relative; /* Para posicionar o conteúdo do evento */
+  overflow: hidden; /* Esconde o texto do evento que transborda */
 }
 
 .day:hover {
   background-color: var(--hover);
 }
 
+/* CORREÇÃO: Usando a classe .currentDay ao invés de ID */
 .day.currentDay {
   background-color: var(--current-day);
 }
 
 .event {
-  font-size: 12px; /* Aumentar tamanho da fonte dos eventos */
-  padding: 5px; /* Mais espaço interno */
+  font-size: 12px;
+  padding: 3px;
   background-color: var(--event-color);
   color: white;
-  border-radius: 10px; /* Bordas arredondadas mais suaves */
-  max-height: 55px;
+  border-radius: 5px;
+  max-height: 65px; /* Aumenta a altura máxima */
   overflow: hidden;
+  margin-top: 5px; /* Espaço entre o número do dia e o evento */
+}
+/* Estiliza o conteúdo HTML vindo do Quill */
+.event p, .event h1, .event h2, .event ol, .event ul {
+    margin: 0;
+    padding: 0;
 }
 
 .padding {
@@ -114,44 +126,60 @@ button:hover {
 #newEventModal, #deleteEventModal {
   display: none;
   z-index: 20;
-  padding: 30px; /* Mais espaço interno */
+  padding: 25px;
   background-color: var(--modal-event);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Sombra mais forte */
-  border-radius: 10px; /* Bordas mais arredondadas */
-  width: 400px; /* Largura do modal aumentada */
-  top: 100px;
-  left: calc(50% - 200px);
-  position: absolute;
-  font-family: 'Arial', sans-serif; /* Fonte consistente com o resto */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  width: 450px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centraliza o modal perfeitamente */
+  position: fixed; /* Usa fixed para centralizar na tela */
+  font-family: 'Arial', sans-serif;
+  display: none; /* Inicia escondido */
+  flex-direction: column; /* Organiza os filhos em coluna */
 }
 
-#eventTitleInput {
-  padding: 12px; /* Aumentar o padding */
-  width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 20px;
-  border-radius: 5px; /* Bordas arredondadas */
-  outline: none;
-  border: 2px solid #ddd; /* Borda mais visível */
-  transition: border-color 0.3s; /* Transição suave para a borda */
+/* CORREÇÃO: Define um fundo branco para o editor e uma altura mínima */
+#editor {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.ql-editor {
+  min-height: 150px;
+  background-color: #fff; /* Fundo branco para o editor */
+  color: #333;
+}
+.ql-toolbar {
+  background-color: #f5f5f5; /* Fundo levemente cinza para a barra de ferramentas */
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
-#eventTitleInput.error {
-  border: 2px solid red; /* Borda vermelha para erro */
+/* CORREÇÃO: Container para os botões para evitar sobreposição */
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px; /* Adiciona espaço entre os botões */
 }
 
 #cancelButton, #deleteButton {
   background-color: var(--header-color);
-  border-radius: 20px; /* Bordas arredondadas nos botões */
 }
 
 #saveButton, #closeButton {
   background-color: var(--header-button);
-  border-radius: 20px; /* Bordas arredondadas nos botões */
 }
 
 #eventText {
-  font-size: 16px; /* Aumentar tamanho do texto do evento */
+  font-size: 16px;
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
+  min-height: 100px;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 #modalBackDrop {
@@ -161,19 +189,18 @@ button:hover {
   z-index: 10;
   width: 100vw;
   height: 100vh;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.7); /* Escurecer um pouco mais o fundo do modal */
-}
-
-#newEventModal button {
-  z-index: 1000; /* Um valor alto para garantir que fiquem no topo */
+  position: fixed; /* Usa fixed para cobrir a tela toda */
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 footer {
-  text-align: center; 
-  padding: 10px; 
-  background-color: #f9fafc; 
-  position: fixed; /* Ou sticky, se preferir */
-  bottom: 0; 
-  width: 100%; 
+  text-align: center;
+  padding: 15px;
+  background-color: #e9ecef; /* Cor mais suave */
+  position: fixed; /* Mantém fixo no rodapé */
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  z-index: 5;
+  border-top: 1px solid #ddd;
 }

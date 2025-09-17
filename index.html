@@ -50,21 +50,31 @@
    
   </div>
 
- <div id="newEventModal">
+<div id="newEventModal">
   <h2>Anotações deste dia</h2>
+
+  <div class="color-picker-container">
+    <label for="eventColorInput">Cor da Anotação:</label>
+    <input type="color" id="eventColorInput" value="#64b6e5"> </div>
+
   <div id="editor"></div> 
-  <button id="saveButton">Salvar</button>
-  <button id="cancelButton">Cancelar</button>
+  
+  <div class="modal-buttons">
+    <button id="saveButton">Salvar</button>
+    <button id="cancelButton">Cancelar</button>
+  </div>
 </div>
 
-  <div id="deleteEventModal">
-    <h2>Evento</h2>
+ <div id="deleteEventModal">
+   <h2>Evento</h2>
 
-    <div id="eventText"></div><br>
+   <div id="eventText"></div><br>
 
+   <div class="modal-buttons">
     <button id="deleteButton">Deletar</button>
     <button id="closeButton">Fechar</button>
-  </div>
+   </div>
+ </div>
 
   <div id="modalBackDrop"></div>
 

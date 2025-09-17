@@ -10,6 +10,8 @@
   <link href="darkMode.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <title>Calendario</title>
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 </head>
   <!-- dark mode -->
   
@@ -48,14 +50,12 @@
    
   </div>
 
-  <div id="newEventModal">
-    <h2>Novo evento</h2>
-
-    <input id="eventTitleInput" placeholder="Event Title"/>
-
-    <button id="saveButton">Salvar</button>
-    <button id="cancelButton">Cancelar</button>
-  </div>
+ <div id="newEventModal">
+  <h2>Anotações deste dia</h2>
+  <div id="editor"></div> 
+  <button id="saveButton">Salvar</button>
+  <button id="cancelButton">Cancelar</button>
+</div>
 
   <div id="deleteEventModal">
     <h2>Evento</h2>

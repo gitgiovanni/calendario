@@ -163,6 +163,9 @@ function deleteEvent(){
 // botões 
 
 function buttons (){
+
+  document.getElementById('pdfButton').addEventListener('click', ()=> exportToPdf());
+
   document.getElementById('backButton').addEventListener('click', ()=>{
     nav--
     load()

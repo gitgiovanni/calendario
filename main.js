@@ -114,15 +114,15 @@ function load (){
 }
 
 function exportToPdf() {
-  const element = document.getElementById('container');
-  const opt = {
-    margin:       1,
-    filename:     'calendario.pdf',
-    image:        { type: 'jpeg', quality: 0.98 },
-    html2canvas:  { scale: 2 },
-    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-  };
-  html2pdf().set(opt).from(element).save();
+  const element = document.getElementById('container');
+  const opt = {
+    margin:       1,
+    filename:     'calendario.pdf',
+    image:        { type: 'jpeg', quality: 0.98 },
+    html2canvas:  { scale: 1.5 }, // Altere o valor da escala aqui
+    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+  };
+  html2pdf().set(opt).from(element).save();
 }
 
 function closeModal(){

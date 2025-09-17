@@ -165,6 +165,10 @@ button:hover {
   background-color: rgba(0, 0, 0, 0.7); /* Escurecer um pouco mais o fundo do modal */
 }
 
+#newEventModal button {
+  z-index: 1000; /* Um valor alto para garantir que fiquem no topo */
+}
+
 footer {
   text-align: center; 
   padding: 10px; 

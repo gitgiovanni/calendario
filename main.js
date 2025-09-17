@@ -135,26 +135,64 @@ document.addEventListener('DOMContentLoaded', function() {
     localStorage.setItem('events', JSON.stringify(events));
     closeModal();
   }
-  function exportToPdf() {
+    function exportToPdf() {
+    // 1. Pega o container do calendário e o título
+    const monthDisplay = document.getElementById('monthDisplay');
+    const weekdays = document.getElementById('weekdays');
+    const calendar = document.getElementById('calendar');
+
+    // 2. Cria um elemento temporário para impressão e clona os conteúdos
     const printElement = document.createElement('div');
     printElement.style.padding = '20px';
     printElement.style.fontFamily = 'Arial, sans-serif';
-    const headerClone = document.getElementById('monthDisplay').cloneNode(true);
-    const weekdaysClone = document.getElementById('weekdays').cloneNode(true);
-    const calendarClone = document.getElementById('calendar').cloneNode(true);
+    printElement.style.width = '100%'; // Garante que o conteúdo ocupe a largura
+
+    const headerClone = monthDisplay.cloneNode(true);
+    const weekdaysClone = weekdays.cloneNode(true);
+    const calendarClone = calendar.cloneNode(true);
+
+    // Adiciona estilos para o cabeçalho no PDF
     headerClone.style.textAlign = 'center';
     headerClone.style.fontSize = '24px';
     headerClone.style.marginBottom = '20px';
+    
+    // 3. NOVO: Preparar o clone para impressão (aqui está a mágica!)
+    
+    // Para cada "dia" no calendário clonado...
+    const dayElements = calendarClone.querySelectorAll('.day');
+    dayElements.forEach(day => {
+      // Remove a altura fixa, permitindo que o dia cresça conforme o conteúdo
+      day.style.height = 'auto'; 
+      day.style.minHeight = '100px'; // Garante uma altura mínima para dias vazios
+      day.style.justifyContent = 'flex-start'; // Alinha o número no topo
+    });
+
+    // Para cada "anotação" no calendário clonado...
+    const eventElements = calendarClone.querySelectorAll('.event');
+    eventElements.forEach(event => {
+      // Remove as restrições de altura e corte
+      event.style.maxHeight = 'none';
+      event.style.overflow = 'visible';
+      // Garante que o texto quebre a linha corretamente
+      event.style.whiteSpace = 'normal';
+      event.style.wordBreak = 'break-word';
+    });
+
+    // 4. Adiciona os clones preparados ao elemento de impressão
     printElement.appendChild(headerClone);
     printElement.appendChild(weekdaysClone);
     printElement.appendChild(calendarClone);
+    
+    // 5. Configurações e geração do html2pdf
     const opt = {
-      margin: 0.5,
-      filename: `calendario_${document.getElementById('monthDisplay').innerText.replace(', ', '_')}.pdf`,
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true },
-      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+      margin:       0.5,
+      filename:     `calendario_${monthDisplay.innerText.replace(', ', '_')}.pdf`,
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2, useCORS: true },
+      jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
     };
+
+    // 6. Gera o PDF a partir do elemento temporário e modificado
     html2pdf().set(opt).from(printElement).save();
   }
   function initButtons() {
